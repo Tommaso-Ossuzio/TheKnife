@@ -1,1 +1,17 @@
+Cognome: Ossuzio
+Nome: Tommaso
+Matricola: 761586
 
+Cognome: Franguelli
+Nome: Matteo
+Matricola: _
+
+Cognome: Toschi
+Nome: Elia
+Matricola: _
+
+Cognome: Resteghini
+Nome: Celestino
+Matricola: _
+
+Link repository GitHub:  https://github.com/Tommaso-Ossuzio/TheKnife.git

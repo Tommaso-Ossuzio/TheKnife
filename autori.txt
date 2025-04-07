@@ -12,6 +12,6 @@ Matricola: _
 
 Cognome: Resteghini
 Nome: Celestino
-Matricola: 760865.
+Matricola: 760865
 
 Link repository GitHub:  https://github.com/Tommaso-Ossuzio/TheKnife.git

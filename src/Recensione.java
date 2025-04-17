@@ -1,11 +1,11 @@
 import java.util.Date;
 
 public class Recensione {
-    int n_stelle;
-    String text;
-    Date data;
-    UtenteRegistrato utente;
-    Ristorante ristorante;
+    private int n_stelle;
+    private String text;
+    private Date data;
+    private UtenteRegistrato utente;
+    private Ristorante ristorante;
 
     public Recensione(int n_stelle, String text, UtenteRegistrato utente, Ristorante ristorante)
     {
@@ -14,6 +14,14 @@ public class Recensione {
         this.utente = utente;
         this.ristorante = ristorante;
     }
+
+    //<editor-fold desc="Getter">
+    public int getN_stelle() {return n_stelle;}
+    public String getText() {return text;}
+    public Date getData() {return data;}
+    public UtenteRegistrato getUtente() {return utente;}
+    public Ristorante getRistorante() {return ristorante;}
+    //</editor-fold>
 
     @Override
     public String toString() {

@@ -3,7 +3,7 @@ import java.util.LinkedList;
 
 public class GestioneFile {
 
-    private String percorsoFile;
+    private final String percorsoFile;
 
     public GestioneFile() {
         String nomeCartella = "doc";
@@ -56,7 +56,7 @@ public class GestioneFile {
 
         // Costruzione riga CSV
         String[] campi = {
-                name, address, location, price, cuisine, longitude, latitude, phoneNumber, url, websiteUrl, award, greenStar, facilitiesAndServices, description, domicilio, prenotazione,
+                name, address, location, price, cuisine, longitude, latitude, phoneNumber, url, websiteUrl, award, greenStar, facilitiesAndServices, description, domicilio, prenotazione
         };
 
         StringBuilder riga = new StringBuilder();

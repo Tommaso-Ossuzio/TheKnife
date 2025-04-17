@@ -17,7 +17,6 @@ public class Recensione {
         this.utente = utente;
         this.ristorante = ristorante;
         this.data = new Date();
-
     }
 
     //<editor-fold desc="Getter">

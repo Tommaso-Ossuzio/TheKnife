@@ -1,12 +1,35 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class GestioneFile {
 
-    public static void scriviFile()
-    {
-        //
+    private String percorsoFile;
+
+    public GestioneFile() {
+        this.percorsoFile = "/doc/michel_my_maps.csv";
     }
-    public static String leggiFile()
-    {
-        return null;
+
+    public void leggiFile() {
+        try (BufferedReader br = new BufferedReader(new FileReader(percorsoFile))) {
+            String riga;
+
+            while ((riga = br.readLine()) != null) {
+                String[] valori = riga.split(",");
+                for (String valore : valori) {
+                    System.out.print(valore.trim() + " | ");
+                }
+                System.out.println();
+            }
+
+        } catch (IOException e) {
+            System.err.println("Errore nella lettura del file: " + e.getMessage());
+        }
+    }
+
+    public static void main(String[] args) {
+        GestioneFile gf = new GestioneFile();
+        gf.leggiFile();
     }
 
 

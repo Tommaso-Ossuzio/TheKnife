@@ -1,4 +1,4 @@
-<mxfile host="drawio-plugin" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" modified="2025-04-17T13:17:28.363Z" etag="an_eJVR-dJ9ePIIk9VaQ" version="22.1.22" type="embed">
+<mxfile host="drawio-plugin" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" modified="2025-04-17T13:26:25.726Z" etag="La7WzN5cdmaRjtU2o3ej" version="22.1.22" type="embed">
   <diagram name="Page-1" id="4kN5xnnU_OheXPAwVqNF">
     <mxGraphModel dx="1560" dy="1849" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -169,7 +169,7 @@
         <mxCell id="VzG-2pM0JNzL2qDlQ1p--39" value="operations" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;" parent="VzG-2pM0JNzL2qDlQ1p--35" vertex="1">
           <mxGeometry y="118" width="190" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="VzG-2pM0JNzL2qDlQ1p--40" value="-aggiungiRistorante()&lt;div&gt;-visualizzaRecensioni()&lt;/div&gt;&lt;div&gt;-rispostaRecensione()&lt;/div&gt;&lt;div&gt;-visualizzaMedia()&lt;/div&gt;&lt;div&gt;-n_recensioni()&lt;/div&gt;&lt;div&gt;-visualizzaRiepilogo()&lt;/div&gt;&lt;div&gt;-visualizzaPropriRistoranti()&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;" parent="VzG-2pM0JNzL2qDlQ1p--35" vertex="1">
+        <mxCell id="VzG-2pM0JNzL2qDlQ1p--40" value="-aggiungiRistorante()&lt;div&gt;-visualizzaRecensioniRicevute()&lt;/div&gt;&lt;div&gt;-rispostaRecensione()&lt;/div&gt;&lt;div&gt;-visualizzaMedia()&lt;/div&gt;&lt;div&gt;-n_recensioni()&lt;/div&gt;&lt;div&gt;-visualizzaRiepilogo()&lt;/div&gt;&lt;div&gt;-visualizzaPropriRistoranti()&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;" parent="VzG-2pM0JNzL2qDlQ1p--35" vertex="1">
           <mxGeometry y="138" width="190" height="102" as="geometry" />
         </mxCell>
         <mxCell id="8An6c7Bw5HbiRdQIPrrb-6" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;edgeStyle=orthogonalEdgeStyle;endArrow=none;startFill=0;" parent="1" source="VzG-2pM0JNzL2qDlQ1p--30" edge="1">
@@ -211,7 +211,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="8An6c7Bw5HbiRdQIPrrb-16" value="Scrive" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;locked=1;connectable=0;" parent="1" vertex="1">
+        <mxCell id="8An6c7Bw5HbiRdQIPrrb-16" value="scrive" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
           <mxGeometry x="390" y="-307" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="8An6c7Bw5HbiRdQIPrrb-17" value="vive" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">

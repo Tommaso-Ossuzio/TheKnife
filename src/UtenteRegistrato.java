@@ -34,4 +34,35 @@ public class UtenteRegistrato extends Utente{
     private void aggiungiRecensione(){
         //sviluppa metodo
     }
+
+    private void rimuoviRecensione(){
+        //sviluppa metodo
+    }
+
+    private void modificaRecensione(){
+        //sviluppa metodo
+    }
+
+    public void visualizzaRecensioniFatte() {
+        //sviluppa metodo
+    }
+
+    public void visualizzaRistorantiRecensiti() {
+        //sviluppa metodo
+    }
+
+    @Override
+    public void visualizzaRecensioni() {
+        //sviluppa metodo
+    }
+
+    @Override
+    public void visualizzaRistorante() {
+        //sviluppa metodo
+    }
+
+    @Override
+    public void cercaRistorante() {
+        //sviluppa metodo
+    }
 }

@@ -2,6 +2,8 @@ public class UtenteNonRegistrato extends Utente {
     public UtenteNonRegistrato() {}
 
 
+
+
     public void registrazione() {
         //implementa metodo
     }

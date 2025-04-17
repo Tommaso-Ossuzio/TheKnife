@@ -18,4 +18,4 @@ Nome: Celestino
 Matricola: 760865
 Sede: VA
 
-Link repository GitHub:  https://github.com/Tommaso-Ossuzio/TheKnife.git
+Link repository GitHub:  https://github.com/Tommaso-Ossuzio/theknife.git

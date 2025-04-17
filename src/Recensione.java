@@ -9,6 +9,8 @@ public class Recensione {
 
     public Recensione(int n_stelle, String text, UtenteRegistrato utente, Ristorante ristorante)
     {
+        if(text.length()>=300)
+            text=text.substring(0,300);
         this.n_stelle = n_stelle;
         this.text = text;
         this.utente = utente;

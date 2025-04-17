@@ -8,7 +8,7 @@ public class Ristorante {
     public double prezzo_Medio;
     private LinkedList<String> cucina;
     private Luogo luogo;
-    private LinkedList<Recensione> recensioni;
+    public LinkedList<Recensione> recensioni;
 
     public Ristorante(String nome, String n_tel, boolean domicilio, boolean prenotazione, double prezzo_Medio, LinkedList<String> cucina, Luogo luogo)
     {
@@ -29,7 +29,6 @@ public class Ristorante {
     public boolean getPrenotazione(){return prenotazione;}
     public LinkedList<String> getCucina(){return cucina;}
     public Luogo getLuogo(){return luogo;}
-    public LinkedList<Recensione> getRecensioni(){return recensioni;}
     //</editor-fold>
 
     public String toString() {

@@ -10,7 +10,8 @@ public class UtenteRegistrato extends Utente{
     boolean ristoratore;
     Luogo luogo;
 
-    private LinkedList<Ristorante> RistorantiPreferiti;
+    private LinkedList<Ristorante> ristorantiPreferiti;
+    private LinkedList<Recensione> listaRecensioni;
 
     public UtenteRegistrato(String username, String nome, String cognome, Date dataNascita, String password, boolean ristoratore, Luogo luogo) {
         this.username = username;
@@ -21,7 +22,8 @@ public class UtenteRegistrato extends Utente{
         this.ristoratore = ristoratore;
         this.luogo = luogo;
 
-        this.RistorantiPreferiti = new LinkedList<Ristorante>();
+        this.ristorantiPreferiti = new LinkedList<Ristorante>();
+        this.listaRecensioni = new LinkedList<>();
     }
 
     //<editor-fold desc="Getter">
@@ -31,14 +33,14 @@ public class UtenteRegistrato extends Utente{
     public Date getDataNascita() { return dataNascita; }
     public boolean isRistoratore() { return ristoratore; }
     public Luogo getLuogo() { return luogo; }
-    public LinkedList<Ristorante> getRistorantiPreferiti() { return RistorantiPreferiti; }
+    public LinkedList<Ristorante> getRistorantiPreferiti() { return ristorantiPreferiti; }
     //</editor-fold>
 
 
 
     public void aggiungiPreferito(Ristorante ristorante) {
-        if (!RistorantiPreferiti.contains(ristorante)) {
-            RistorantiPreferiti.add(ristorante);
+        if (!ristorantiPreferiti.contains(ristorante)) {
+            ristorantiPreferiti.add(ristorante);
             System.out.println("Ristorante aggiunto ai preferiti: " /*+ ristorante.getNome()*/);
         } else {
             System.out.println("Il ristorante è già nei preferiti.");
@@ -46,26 +48,30 @@ public class UtenteRegistrato extends Utente{
     }
 
     public void visualizzaPreferito() {
-        if (RistorantiPreferiti.isEmpty()) {
+        if (ristorantiPreferiti.isEmpty()) {
             System.out.println("Nessun ristorante nei preferiti.");
         } else {
             System.out.println("Ristoranti preferiti:");
-            for (Ristorante r : RistorantiPreferiti) {
+            for (Ristorante r : ristorantiPreferiti) {
                 System.out.println("- " /*+ r.getNome()*/);
             }
         }
     }
 
     public void rimuoviPreferito(Ristorante ristorante) {
-        if (RistorantiPreferiti.remove(ristorante)) {
+        if (ristorantiPreferiti.remove(ristorante)) {
             System.out.println("Ristorante rimosso dai preferiti: " /*+ ristorante.getNome()*/);
         } else {
             System.out.println("Il ristorante non era nei preferiti.");
         }
     }
 
-    private void aggiungiRecensione(){
-        //sviluppa metodo
+    private void aggiungiRecensione(int n_stelle,String text, Date data, UtenteRegistrato utente, Ristorante ristorante)
+    {
+        Recensione recensione= new Recensione(n_stelle, text, utente, ristorante );
+
+
+
     }
 
     private void rimuoviRecensione(){

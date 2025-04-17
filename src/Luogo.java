@@ -17,12 +17,13 @@ public class Luogo {
         this.longitudine = longitudine;
     }
 
-    public String GetNazione() { return nazione;}
-    public String GetVia() { return via;}
-    public String GetCitta() { return citta;}
-    public int GetN_civico() { return n_civico;}
-    public double GetLatitudine() { return latitudine;}
-    public double GetLongitudine() { return longitudine;}
+    public String getNazione() { return nazione;}
+    public String getVia() { return via;}
+    public String getCitta() { return citta;}
+    public int getN_civico() { return n_civico;}
+    public double getLatitudine() { return latitudine;}
+    public double getLongitudine() { return longitudine;}
+
 
     public boolean equals(Luogo l)
     {
@@ -34,17 +35,6 @@ public class Luogo {
     {
         return "Luogo: "+nazione+" "+via+" "+citta+" "+n_civico+" "+latitudine+" "+longitudine+"\n";
     }
-//    public boolean equals(RettangoloCustom altro) {
-//        return this.base == altro.base && this.altezza == altro.altezza;
-//        //return this.getBase()==altro.getBase() && this.getAltezza()==altro.getAltezza();
-//    }
-//
-//    @Override
-//    public boolean equals(Object altro) {
-//        if (altro instanceof RettangoloCustom)
-//            return this.equals((RettangoloCustom) altro);
-//        return false;
-
 
 
 }

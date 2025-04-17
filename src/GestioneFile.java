@@ -1,11 +1,9 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.util.LinkedList;
 
 public class GestioneFile {
 
-    private String percorsoFile;
+    private final String percorsoFile;
 
     public GestioneFile() {
         String nomeCartella = "doc";
@@ -34,8 +32,63 @@ public class GestioneFile {
         }
     }
 
-    public static void main(String[] args) {
-        GestioneFile gf = new GestioneFile();
-        gf.leggiFile();
+    public void scriviFile(Ristorante ristorante) {
+        // Costruzione dei campi da scrivere nel file
+        String name = ristorante.getNome();
+        String address = ristorante.getLuogo() != null ? "\"" + ristorante.getLuogo().getVia() + ", " + ristorante.getLuogo().getN_civico() + ", " + ristorante.getLuogo().getCitta() + "\"": "null";
+        String location = ristorante.getLuogo() != null ? "\"" + ristorante.getLuogo().getCitta() + ", " + ristorante.getLuogo().getNazione() + "\"": "null";
+        String price = String.valueOf(ristorante.prezzo_Medio);
+        String cuisine = ristorante.getCucina() != null ? "\"" + String.join(", ", ristorante.getCucina()) + "\"" : "null";
+        String longitude = ristorante.getLuogo() != null ? String.valueOf(ristorante.getLuogo().getLongitudine()) : "null";
+        String latitude = ristorante.getLuogo() != null ? String.valueOf(ristorante.getLuogo().getLatitudine()) : "null";
+        String phoneNumber = ristorante.getN_tel();
+        String domicilio = ristorante.getDomicilio() ? "true" : "false";
+        String prenotazione = ristorante.getDomicilio() ? "true" : "false";
+
+        // Non esistente nel costruttore di ristorante
+        String url = "null";
+        String websiteUrl = "null";
+        String award = "null";
+        String greenStar = "null";
+        String facilitiesAndServices = "null";
+
+        String description = "null"; // non disponibile
+
+        // Costruzione riga CSV
+        String[] campi = {
+                name, address, location, price, cuisine, longitude, latitude, phoneNumber, url, websiteUrl, award, greenStar, facilitiesAndServices, description, domicilio, prenotazione
+        };
+
+        StringBuilder riga = new StringBuilder();
+        for (int i = 0; i < campi.length; i++) {
+            String valore = (campi[i] == null || campi[i].trim().isEmpty()) ? "null" : campi[i].trim();
+            riga.append(valore);
+            if (i < campi.length - 1) {
+                riga.append(",");
+            }
+        }
+
+        // Scrittura su file
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(percorsoFile, true))) {
+            bw.write(riga.toString());
+            bw.newLine();
+            System.out.println("Ristorante aggiunto correttamente.");
+        } catch (IOException e) {
+            System.err.println("Errore nella scrittura del file: " + e.getMessage());
+        }
     }
+
+    /*
+    public static void main(String[] args) {
+        LinkedList<String> cucina = new LinkedList<>();
+        cucina.add("Italiana");
+        cucina.add("Vegetariana");
+
+        Luogo luogo = new Luogo("Italia", "Via Roma", "Arcisate", 10, 10.10,10.10);
+        Ristorante r = new Ristorante("Trattoria da Mario", "+3901122334455", true, true, 35.50, cucina, luogo);
+
+        GestioneFile gf = new GestioneFile();
+        gf.scriviFile(r);
+    }
+    */
 }

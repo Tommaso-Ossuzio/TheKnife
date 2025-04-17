@@ -9,7 +9,16 @@ public class Ristorante {
     private LinkedList<String> cucina;
     private Luogo luogo;
 
-    public Ristorante() {}
+    public Ristorante(String nome, String n_tel, boolean domicilio, boolean prenotazione, double prezzo_Medio, LinkedList<String> cucina, Luogo luogo)
+    {
+        this.nome = nome;
+        this.n_tel = n_tel;
+        this.domicilio = domicilio;
+        this.prenotazione = prenotazione;
+        this.prezzo_Medio = prezzo_Medio;
+        this.cucina = cucina;
+        this.luogo = luogo;
+    }
 
     //<editor-fold desc="Getter">
     public String getNome(){return nome;}

@@ -24,6 +24,18 @@ public class UtenteRegistrato extends Utente{
         this.RistorantiPreferiti = new LinkedList<Ristorante>();
     }
 
+    //<editor-fold desc="Getter">
+    public String getUsername() { return username; }
+    public String getNome() { return nome; }
+    public String getCognome() { return cognome; }
+    public Date getDataNascita() { return dataNascita; }
+    public boolean isRistoratore() { return ristoratore; }
+    public Luogo getLuogo() { return luogo; }
+    public LinkedList<Ristorante> getRistorantiPreferiti() { return RistorantiPreferiti; }
+    //</editor-fold>
+
+
+
     public void aggiungiPreferito(Ristorante ristorante) {
         if (!RistorantiPreferiti.contains(ristorante)) {
             RistorantiPreferiti.add(ristorante);

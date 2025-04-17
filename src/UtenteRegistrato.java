@@ -14,13 +14,13 @@ public class UtenteRegistrato extends Utente{
     private LinkedList<Ristorante> ristorantiPreferiti;
     private LinkedList<Recensione> recensioni;
 
-    public UtenteRegistrato(String username, String nome, String cognome, Date dataNascita, String password, boolean ristoratore, Luogo luogo) {
+    public UtenteRegistrato(String username, String nome, String cognome, Date dataNascita, String password, Luogo luogo) {
         this.username = username;
         this.nome = nome;
         this.cognome = cognome;
         this.dataNascita = dataNascita;
         this.password = password;
-        this.ristoratore = ristoratore;
+        this.ristoratore = false;
         this.luogo = luogo;
 
         this.ristorantiPreferiti = new LinkedList<Ristorante>();
@@ -108,19 +108,29 @@ public class UtenteRegistrato extends Utente{
         return lista;
     }
 
+    //da verificare in utente se void o LinkedList
     @Override
-    public void visualizzaRecensioni() {
-
-
+    public LinkedList<Recensione> visualizzaRecensioni(Ristorante ristorante)
+    {
+        return ristorante.getRecensioni();
     }
 
     @Override
-    public void visualizzaRistorante() {
-        //sviluppa metodo
+    public String visualizzaRistorante(Ristorante ristorante)
+    {
+        //da gestire in modo diverso con grafica
+        return ristorante.toString();
     }
 
     @Override
-    public void cercaRistorante() {
-        //sviluppa metodo
+    public Ristorante cercaRistorante(String nome, String numeroTelefono, boolean prenotazioneOnline, double prezzoMinore, double prezzoMaggiore, LinkedList<String> cucine, Luogo luogo)
+    {
+        if(prezzoMaggiore==0)
+            prezzoMaggiore = Integer.MAX_VALUE;
+        //creazione dei sottometodi possibili
+
+        return new Ristorante();
     }
+
+
 }

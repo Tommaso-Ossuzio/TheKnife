@@ -1,5 +1,5 @@
-import javax.management.AttributeNotFoundException;
 import java.util.Date;
+import java.util.LinkedList;
 
 public class UtenteNonRegistrato extends Utente {
     public UtenteNonRegistrato() {}
@@ -9,7 +9,7 @@ public class UtenteNonRegistrato extends Utente {
         //implementazione metodo in corso
         if(!ristoratore)
         {
-            UtenteRegistrato u = new UtenteRegistrato(username, nome, cognome, dataNascita, password, ristoratore, luogo);
+            UtenteRegistrato u = new UtenteRegistrato(username, nome, cognome, dataNascita, password, luogo);
             //aggiungere l'utente al file (il controllo su tutti i parametri inseriti viene fatto a priopri quando si richiede la registrazione)
         }
         else
@@ -21,17 +21,21 @@ public class UtenteNonRegistrato extends Utente {
     }
 
     @Override
-    public void visualizzaRecensioni() {
+    public LinkedList<Recensione> visualizzaRecensioni(Ristorante ristorante) {
         //implementa metodo
+        return new  LinkedList<Recensione>();
     }
 
     @Override
-    public void visualizzaRistorante() {
+    public String visualizzaRistorante(Ristorante ristorante ) {
         //implementa metodo
+        return  "";
     }
 
     @Override
-    public void cercaRistorante() {
+    public Ristorante cercaRistorante(String nome, String numeroTelefono, boolean prenotazioneOnline, double prezzoMinore, double prezzoMaggiore, LinkedList<String> cucine, Luogo luogo)
+    {
         //implementa metodo
+        return new Ristorante();
     }
 }

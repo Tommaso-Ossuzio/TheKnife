@@ -30,6 +30,12 @@ public class Luogo {
         return this.nazione.equals(l.nazione) && this.via.equals(l.via) && this.citta.equals(l.citta) &&this.latitudine == l.latitudine && this.longitudine == l.longitudine ;
     }
 
+    public boolean equals(Object obj)
+    {
+        if(obj instanceof Luogo)
+            return this.equals((Luogo)obj);
+        return false;
+    }
     @Override
     public String toString()
     {

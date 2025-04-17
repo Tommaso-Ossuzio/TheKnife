@@ -21,6 +21,8 @@ public class Ristorante {
         this.luogo = luogo;
         this.recensioni = new LinkedList<>();
     }
+    //temporaneo
+    public Ristorante(){}
 
     //<editor-fold desc="Getter">
     public String getNome(){return nome;}
@@ -29,6 +31,8 @@ public class Ristorante {
     public boolean getPrenotazione(){return prenotazione;}
     public LinkedList<String> getCucina(){return cucina;}
     public Luogo getLuogo(){return luogo;}
+    public LinkedList<Recensione> getRecensioni(){return recensioni;}
+    public int getNumeroRecensioni() {return recensioni.size();}
     //</editor-fold>
 
     public String toString() {

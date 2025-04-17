@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -7,7 +8,8 @@ public class GestioneFile {
     private String percorsoFile;
 
     public GestioneFile() {
-        this.percorsoFile = "/doc/michel_my_maps.csv";
+        String nomeFile = "michelin_my_maps.csv";
+        this.percorsoFile = System.getProperty("user.dir") + File.separator + nomeFile;
     }
 
     public void leggiFile() {
@@ -31,7 +33,4 @@ public class GestioneFile {
         GestioneFile gf = new GestioneFile();
         gf.leggiFile();
     }
-
-
-
 }

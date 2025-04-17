@@ -8,5 +8,15 @@ public class Luogo {
     double longitudine;
 
 
+    public String GetNazione() { return nazione;}
+    public String GetVia() { return via;}
+    public String GetCitta() { return citta;}
+    public String GetN_civico() { return n_civico;}
+    public double GetLatitudine() { return latitudine;}
+    public double GetLongitudine() { return longitudine;}
+
+
+
+
 
 }

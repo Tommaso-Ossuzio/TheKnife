@@ -1,24 +1,27 @@
+
 import java.util.Date;
 
 public class Recensione {
-    private int n_stelle;
+    private int numeroStelle;
     private String text;
     private Date data;
     private UtenteRegistrato utente;
     private Ristorante ristorante;
 
-    public Recensione(int n_stelle, String text, UtenteRegistrato utente, Ristorante ristorante)
+    public Recensione(int numeroStelle, String text, UtenteRegistrato utente, Ristorante ristorante)
     {
         if(text.length()>=300)
             text=text.substring(0,300);
-        this.n_stelle = n_stelle;
+        this.numeroStelle = numeroStelle;
         this.text = text;
         this.utente = utente;
         this.ristorante = ristorante;
+        this.data = new Date();
+
     }
 
     //<editor-fold desc="Getter">
-    public int getN_stelle() {return n_stelle;}
+    public int getNumeroStelle() {return numeroStelle;}
     public String getText() {return text;}
     public Date getData() {return data;}
     public UtenteRegistrato getUtente() {return utente;}
@@ -27,7 +30,7 @@ public class Recensione {
 
     @Override
     public String toString() {
-        return "Recensione: "+ n_stelle+" "+text+" "+utente+" "+ristorante+"\n";
+        return "Recensione: "+ numeroStelle+" "+text+" "+utente+" "+ristorante+"\n";
     }
 
     public boolean equals(Recensione r) {

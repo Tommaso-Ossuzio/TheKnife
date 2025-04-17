@@ -1,3 +1,4 @@
+
 import java.util.Date;
 import java.util.LinkedList;
 
@@ -11,7 +12,7 @@ public class UtenteRegistrato extends Utente{
     Luogo luogo;
 
     private LinkedList<Ristorante> ristorantiPreferiti;
-    private LinkedList<Recensione> listaRecensioni;
+    private LinkedList<Recensione> recensioni;
 
     public UtenteRegistrato(String username, String nome, String cognome, Date dataNascita, String password, boolean ristoratore, Luogo luogo) {
         this.username = username;
@@ -23,7 +24,7 @@ public class UtenteRegistrato extends Utente{
         this.luogo = luogo;
 
         this.ristorantiPreferiti = new LinkedList<Ristorante>();
-        this.listaRecensioni = new LinkedList<>();
+        this.recensioni = new LinkedList<>();
     }
 
     //<editor-fold desc="Getter">
@@ -34,6 +35,7 @@ public class UtenteRegistrato extends Utente{
     public boolean isRistoratore() { return ristoratore; }
     public Luogo getLuogo() { return luogo; }
     public LinkedList<Ristorante> getRistorantiPreferiti() { return ristorantiPreferiti; }
+    public LinkedList<Recensione> getRecensioni() { return recensioni; }
     //</editor-fold>
 
 
@@ -66,33 +68,49 @@ public class UtenteRegistrato extends Utente{
         }
     }
 
-    private void aggiungiRecensione(int n_stelle,String text, Date data, UtenteRegistrato utente, Ristorante ristorante)
+    private void aggiungiRecensione(int n_stelle,String text, Date data, Ristorante ristorante)
     {
-        Recensione recensione= new Recensione(n_stelle, text, utente, ristorante );
+        Recensione recensione= new Recensione(n_stelle, text,this, ristorante );
+        recensioni.add(recensione);
+        Ristorante r = ristorante;
+        r.recensioni.add(recensione);
+    }
 
-
+    private void rimuoviRecensione(Recensione recensione)
+    {
+        recensioni.remove(recensioni.indexOf(recensione));
+        Ristorante ristorante= recensione.getRistorante();
+        ristorante.recensioni.remove(recensioni.indexOf(ristorante));
 
     }
 
-    private void rimuoviRecensione(){
-        //sviluppa metodo
+    private void modificaRecensione(Recensione recensione, String text, int numeroStelle )
+    {
+        numeroStelle = numeroStelle == 0 ? recensione.getNumeroStelle(): numeroStelle;
+        text = text.length()==0 ||text ==null ? recensione.getText(): text;
+        if(recensioni.contains(recensione)) {
+            recensioni.set(recensioni.indexOf(recensione), new Recensione(numeroStelle, text, this, recensione.getRistorante()));
+            Ristorante ristorante= recensione.getRistorante();
+            ristorante.recensioni.set(recensioni.indexOf(recensione), new Recensione(numeroStelle, text, this, recensione.getRistorante()));
+        }
     }
 
-    private void modificaRecensione(){
-        //sviluppa metodo
+    private LinkedList<Recensione> visualizzaRecensioniFatte()
+    {
+        return getRecensioni();
     }
 
-    private void visualizzaRecensioniFatte() {
-        //sviluppa metodo
-    }
-
-    private void visualizzaRistorantiRecensiti() {
-        //sviluppa metodo
+    private LinkedList<Ristorante> visualizzaRistorantiRecensiti()
+    {
+        LinkedList<Ristorante> lista = new LinkedList<>();
+        for(Recensione r: recensioni )
+            lista.add(r.getRistorante());
+        return lista;
     }
 
     @Override
     public void visualizzaRecensioni() {
-        //sviluppa metodo
+
     }
 
     @Override

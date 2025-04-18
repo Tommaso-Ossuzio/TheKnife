@@ -33,6 +33,19 @@ public class Ristorante {
     public Luogo getLuogo(){return luogo;}
     public LinkedList<Recensione> getRecensioni(){return recensioni;}
     public int getNumeroRecensioni() {return recensioni.size();}
+    public double getMediaStelle()
+    {
+        if(!recensioni.isEmpty())
+        {
+            int somma = 0;
+            for (Recensione r : recensioni) {
+                somma += r.getNumeroStelle();
+            }
+            return (double) somma / recensioni.size();
+        }
+        else
+            return 0;
+    }
     //</editor-fold>
 
     public String toString() {

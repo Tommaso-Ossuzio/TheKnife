@@ -1,5 +1,6 @@
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.stream.Collectors;
 
 public class UtenteNonRegistrato extends Utente {
     public UtenteNonRegistrato() {}
@@ -41,7 +42,7 @@ public class UtenteNonRegistrato extends Utente {
         Per media del numero di stelle
         Una combinazione dei precedenti criteri di ricerca
 
-        possiamo decidere se fare un unico metodo, quindi in base agli elementi inseriti troviamo i ristoranti (gli elementi non inseriti saranno null)
+        possiamo decidere se fare un unico metodo, quindi in base agli elementi inseriti troviamo i ristoranti (gli elementi non inseriti saranno null, i double -1 e i boolean false)
         oppure facciamo più metodi con l'overloading (anche se essendoci la combinazione di più criteri conviene farne uno unico)
     */
     @Override
@@ -56,8 +57,51 @@ public class UtenteNonRegistrato extends Utente {
 
         if(luogo!=null)
         {
-            //r = g.leggiFile().contains(x->(x instanceof Ristorante) && x(Ristorante).)
+            /*
+                for (Ristorante risto : g.leggiFile())
+                {
+                    if (risto.getLuogo().equals(luogo)) {
+                        r.add(risto);
+                    }
+                }
+                Stessa cosa
+            */
+            r = g.leggiFile().stream().filter(x -> x.getLuogo().equals(luogo)).collect(Collectors.toCollection(LinkedList::new));
         }
-        return new LinkedList<Ristorante>();
+
+        if(cucina!=null)//rimozione dei ristoranti con cucine diverse da quella selezionata
+        {
+            r.removeIf(x -> !x.getCucina().contains(cucina));
+        }
+
+        if(prezzoMinore>=0 && prezzoMaggiore>=0)//rimozione dei ristoranti con prezzo medio non compreso tra min e max
+        {
+            r.removeIf(x -> !(x.prezzo_Medio>prezzoMinore && x.prezzo_Medio<prezzoMaggiore));
+        }
+        else if(prezzoMinore>=0)//rimozione dei ristoranti con prezzo medio minore del min
+        {
+            r.removeIf(x -> x.prezzo_Medio<prezzoMinore);
+        }
+        else if (prezzoMaggiore>=0) //rimozione dei ristoranti con prezzo medio maggiore del max
+        {
+            r.removeIf(x -> x.prezzo_Medio>prezzoMaggiore);
+        }
+
+        if(delivery) //rimozione dei ristoranti che non hanno il servizio di delivery
+        {
+            r.removeIf(x -> x.getDomicilio()==false);
+        }
+
+        if(prenotazioneOn) //rimozione dei ristoranti che non hanno il servizio di delivery
+        {
+            r.removeIf(x -> x.getPrenotazione()==false);
+        }
+
+        if(medStelle>=0)
+        {
+            r.removeIf(x -> x.getMediaStelle()<medStelle);
+        }
+
+        return r;
     }
 }

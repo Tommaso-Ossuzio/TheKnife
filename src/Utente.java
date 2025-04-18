@@ -3,7 +3,7 @@ import java.util.LinkedList;
 public abstract class Utente {
 
 
-    public abstract Ristorante cercaRistorante(String nome, String numeroTelefono, boolean prenotazioneOnline, double prezzoMinore, double prezzoMaggiore, LinkedList<String> cucine, Luogo luogo);
+    public abstract LinkedList<Ristorante> cercaRistorante(Luogo luogo, String cucina, double prezzoMinore, double prezzoMaggiore, boolean delivery, boolean prenotazioneOn, double medStelle);
 
     public abstract LinkedList<Recensione> visualizzaRecensioni(Ristorante ristorante);
 

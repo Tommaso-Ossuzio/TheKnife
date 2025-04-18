@@ -32,10 +32,32 @@ public class UtenteNonRegistrato extends Utente {
         return  "";
     }
 
+    /*
+        Per tipologia di cucina
+        Per locazione geografica (DATO OBBLIGATORIO PER OGNI METODO DI RICERCA) !!!
+        Per fascia di prezzo (es. “minore di 30€”, “tra 20€ e 50€”)
+        In base alla disponibilità del servizio di delivery
+        In base alla disponibilità del servizio di prenotazione online
+        Per media del numero di stelle
+        Una combinazione dei precedenti criteri di ricerca
+
+        possiamo decidere se fare un unico metodo, quindi in base agli elementi inseriti troviamo i ristoranti (gli elementi non inseriti saranno null)
+        oppure facciamo più metodi con l'overloading (anche se essendoci la combinazione di più criteri conviene farne uno unico)
+    */
     @Override
-    public Ristorante cercaRistorante(String nome, String numeroTelefono, boolean prenotazioneOnline, double prezzoMinore, double prezzoMaggiore, LinkedList<String> cucine, Luogo luogo)
+    public LinkedList<Ristorante> cercaRistorante(Luogo luogo, String cucina, double prezzoMinore, double prezzoMaggiore, boolean delivery, boolean prenotazioneOn, double medStelle)
     {
-        //implementa metodo
-        return new Ristorante();
+        //implementazione in corso
+        //L'idea è quella di prendere una lista di ristoranti partendo dal primo criterio di ricerca
+        // e nel caso di più criteri: eliminare i ristoranti che non li soddisfano contemporaneamente
+
+        GestioneFile g = new GestioneFile();
+        LinkedList<Ristorante> r = null;
+
+        if(luogo!=null)
+        {
+            //r = g.leggiFile().contains(x->(x instanceof Ristorante) && x(Ristorante).)
+        }
+        return new LinkedList<Ristorante>();
     }
 }

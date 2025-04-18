@@ -11,7 +11,8 @@ public class GestioneFile {
         this.percorsoFile = System.getProperty("user.dir") + File.separator + nomeCartella + File.separator + nomeFile;
     }
 
-    public void leggiFile() {
+    //leggiFile dovrà restiruire la lista dei ristoranti !!! DA IMPLEMENTARE !!!
+    public LinkedList<Ristorante> leggiFile() {
         try (BufferedReader br = new BufferedReader(new FileReader(percorsoFile))) {
             String riga;
             int numeroRiga = 1;
@@ -26,9 +27,11 @@ public class GestioneFile {
                 System.out.println();
                 numeroRiga++;
             }
+            return new LinkedList<Ristorante>();
 
         } catch (IOException e) {
             System.err.println("Errore nella lettura del file: " + e.getMessage());
+            return new LinkedList<Ristorante>();
         }
     }
 

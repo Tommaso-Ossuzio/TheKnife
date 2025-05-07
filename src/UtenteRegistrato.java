@@ -115,10 +115,10 @@ public class UtenteRegistrato extends Utente{
         return ristorante.getRecensioni();
     }
 
+
     @Override
     public String visualizzaRistorante(Ristorante ristorante)
     {
-        //da gestire in modo diverso con grafica
         return ristorante.toString();
     }
 
@@ -134,16 +134,65 @@ public class UtenteRegistrato extends Utente{
         possiamo decidere se fare un unico metodo, quindi in base agli elementi inseriti troviamo i ristoranti (gli elementi non inseriti saranno null)
         oppure facciamo più metodi con l'overloading (anche se essendoci la combinazione di più criteri conviene farne uno unico)
     */
-
     @Override
     public LinkedList<Ristorante> cercaRistorante(Luogo luogo, String cucina, double prezzoMinore, double prezzoMaggiore, boolean delivery, boolean prenotazioneOn, double medStelle)
     {
-        if(prezzoMaggiore==0)
-            prezzoMaggiore = Integer.MAX_VALUE;
-        //creazione dei sottometodi possibili
+        GestioneFile gf = new GestioneFile();
+        LinkedList<Ristorante> lista = gf.leggiFile();
 
-        return new LinkedList<Ristorante>();
+
+        if(luogo!= null)
+        {
+            //da gestire opportunamente con il luogo definitivo
+        }
+
+        if(cucina != null)
+        {
+            lista.removeIf((x)-> !(x.getCucina().equals(cucina)));
+        }
+        //per convenzione se il valore è zero il campo è considerato nullo
+        if(prezzoMinore>0)
+        {    if(prezzoMaggiore>0)
+            {
+                //Ricerca completa min>x>max
+                lista.removeIf((x)->x.prezzo_Medio<prezzoMaggiore);
+            }
+            //ricerca min>x
+            lista.removeIf((x)->x.prezzo_Medio<prezzoMinore);
+        }
+        else
+            if(prezzoMaggiore>0)
+                //ricerca max>x
+                lista.removeIf((x)->x.prezzo_Medio<prezzoMaggiore);
+
+        if(delivery)
+        {
+            lista.removeIf((x)->x.getDomicilio()==false);
+        }
+
+        if(prenotazioneOn)
+        {
+            lista.removeIf((x)->x.getPrenotazione()==false);
+        }
+
+        //per convenzione lo il num stelle a zero è nullo
+        if(medStelle>=0)
+        {
+            lista.removeIf((x)->x.getMediaStelle()<medStelle);
+        }
+
+        return lista;
     }
 
+    public static void main(String args[])
+    {
+        Luogo luogo = new Luogo("rea","fa","d",3,4.5,3.4);
+        UtenteRegistrato ut = new UtenteRegistrato("gig","fa","faf",new Date("23/5/2005"),"12345",luogo);
+        LinkedList<Ristorante> lista = ut.cercaRistorante(luogo,"Italiana",0,35,true,false,0);
+
+        System.out.println(lista.toString());
+
+
+    }
 
 }

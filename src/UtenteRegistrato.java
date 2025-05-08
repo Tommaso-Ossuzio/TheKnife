@@ -183,15 +183,14 @@ public class UtenteRegistrato extends Utente{
         return lista;
     }
 
-    public static void main(String args[])
-    {
-        Luogo luogo = new Luogo("rea","fa","d",3,4.5,3.4);
-        UtenteRegistrato ut = new UtenteRegistrato("gig","fa","faf",new Date("23/5/2005"),"12345",luogo);
-        LinkedList<Ristorante> lista = ut.cercaRistorante(luogo,"Italiana",0,35,true,false,0);
-
-        System.out.println(lista.toString());
-
-
-    }
+//    public static void main(String args[])
+//    {
+//        Luogo luogo = new Luogo("rea","fa","d",3,4.5,3.4);
+//        UtenteRegistrato ut = new UtenteRegistrato("gig","fa","faf",new Date("23/5/2005"),"12345",luogo);
+//        LinkedList<Ristorante> lista = ut.cercaRistorante(luogo,"Italiana",0,35,true,false,0);
+//
+//        System.out.println(lista.toString());
+//
+//    }
 
 }

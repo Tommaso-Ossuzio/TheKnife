@@ -3,16 +3,12 @@ import java.util.LinkedList;
 
 public class GestioneFile {
 
-    private final String percorsoFile;
-
-    public GestioneFile() {
-        String nomeCartella = "doc";
-        String nomeFile = "michelin_my_maps.csv";
-        this.percorsoFile = System.getProperty("user.dir") + File.separator + nomeCartella + File.separator + nomeFile;
-    }
+    private static String nomeCartella = "doc";
+    private static String nomeFile = "michelin_my_maps.csv";
+    private static final String percorsoFile= System.getProperty("user.dir") + File.separator + nomeCartella + File.separator + nomeFile;
 
     //leggiFile dovrà restiruire la lista dei ristoranti !!! DA IMPLEMENTARE !!!
-    public LinkedList<Ristorante> leggiFile() {
+    public static LinkedList<Ristorante> leggiFile() {
         try (BufferedReader br = new BufferedReader(new FileReader(percorsoFile))) {
             String riga;
             int numeroRiga = 1;
@@ -35,7 +31,7 @@ public class GestioneFile {
         }
     }
 
-    public void scriviFile(Ristorante ristorante) {
+    public static void scriviFile(Ristorante ristorante) {
         // Costruzione dei campi da scrivere nel file
         String name = ristorante.getNome();
         String address = ristorante.getLuogo() != null ? "\"" + ristorante.getLuogo().getVia() + ", " + ristorante.getLuogo().getN_civico() + ", " + ristorante.getLuogo().getCitta() + "\"": "null";
@@ -81,8 +77,8 @@ public class GestioneFile {
         }
     }
 
-    /*
-    public static void main(String[] args) {
+
+    /*public static void main(String[] args) {
         LinkedList<String> cucina = new LinkedList<>();
         cucina.add("Italiana");
         cucina.add("Vegetariana");
@@ -92,6 +88,7 @@ public class GestioneFile {
 
         GestioneFile gf = new GestioneFile();
         gf.scriviFile(r);
-    }
-    */
+        GestioneFile.leggiFile();
+    }*/
+
 }

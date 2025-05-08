@@ -52,7 +52,6 @@ public class UtenteNonRegistrato extends Utente {
         //L'idea è quella di prendere una lista di ristoranti partendo dal primo criterio di ricerca
         // e nel caso di più criteri: eliminare i ristoranti che non li soddisfano contemporaneamente
 
-        GestioneFile g = new GestioneFile();
         LinkedList<Ristorante> r = null;
 
         if(luogo!=null)
@@ -67,7 +66,7 @@ public class UtenteNonRegistrato extends Utente {
                 Stessa cosa
             */
             //DA CAMBIARE mettendo i ristoranti nelle vicinanze
-            r = g.leggiFile().stream().filter(x -> x.getLuogo().equals(luogo)).collect(Collectors.toCollection(LinkedList::new));
+            r = GestioneFile.leggiFile().stream().filter(x -> x.getLuogo().equals(luogo)).collect(Collectors.toCollection(LinkedList::new));
         }
         else
         {

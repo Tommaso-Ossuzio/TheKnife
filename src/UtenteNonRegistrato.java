@@ -66,42 +66,41 @@ public class UtenteNonRegistrato extends Utente {
                 }
                 Stessa cosa
             */
+            //DA CAMBIARE mettendo i ristoranti nelle vicinanze
             r = g.leggiFile().stream().filter(x -> x.getLuogo().equals(luogo)).collect(Collectors.toCollection(LinkedList::new));
         }
+        else
+        {
+            if (cucina != null)//rimozione dei ristoranti con cucine diverse da quella selezionata
+            {
+                r.removeIf(x -> !x.getCucina().contains(cucina));
+            }
 
-        if(cucina!=null)//rimozione dei ristoranti con cucine diverse da quella selezionata
-        {
-            r.removeIf(x -> !x.getCucina().contains(cucina));
-        }
+            if (prezzoMinore >= 0 && prezzoMaggiore >= 0)//rimozione dei ristoranti con prezzo medio non compreso tra min e max
+            {
+                r.removeIf(x -> !(x.prezzo_Medio > prezzoMinore && x.prezzo_Medio < prezzoMaggiore));
+            } else if (prezzoMinore >= 0)//rimozione dei ristoranti con prezzo medio minore del min
+            {
+                r.removeIf(x -> x.prezzo_Medio < prezzoMinore);
+            } else if (prezzoMaggiore >= 0) //rimozione dei ristoranti con prezzo medio maggiore del max
+            {
+                r.removeIf(x -> x.prezzo_Medio > prezzoMaggiore);
+            }
 
-        if(prezzoMinore>=0 && prezzoMaggiore>=0)//rimozione dei ristoranti con prezzo medio non compreso tra min e max
-        {
-            r.removeIf(x -> !(x.prezzo_Medio>prezzoMinore && x.prezzo_Medio<prezzoMaggiore));
-        }
-        else if(prezzoMinore>=0)//rimozione dei ristoranti con prezzo medio minore del min
-        {
-            r.removeIf(x -> x.prezzo_Medio<prezzoMinore);
-        }
-        else if (prezzoMaggiore>=0) //rimozione dei ristoranti con prezzo medio maggiore del max
-        {
-            r.removeIf(x -> x.prezzo_Medio>prezzoMaggiore);
-        }
+            if (delivery) //rimozione dei ristoranti che non hanno il servizio di delivery
+            {
+                r.removeIf(x -> x.getDomicilio() == false);
+            }
 
-        if(delivery) //rimozione dei ristoranti che non hanno il servizio di delivery
-        {
-            r.removeIf(x -> x.getDomicilio()==false);
-        }
+            if (prenotazioneOn) //rimozione dei ristoranti che non hanno il servizio di delivery
+            {
+                r.removeIf(x -> x.getPrenotazione() == false);
+            }
 
-        if(prenotazioneOn) //rimozione dei ristoranti che non hanno il servizio di delivery
-        {
-            r.removeIf(x -> x.getPrenotazione()==false);
+            if (medStelle >= 0) {
+                r.removeIf(x -> x.getMediaStelle() < medStelle);
+            }
         }
-
-        if(medStelle>=0)
-        {
-            r.removeIf(x -> x.getMediaStelle()<medStelle);
-        }
-
         return r;
     }
 }

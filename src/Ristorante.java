@@ -2,20 +2,20 @@ import java.util.LinkedList;
 
 public class Ristorante {
     private String nome;
-    private String n_tel;
-    private boolean domicilio;  //Disponibilità del servizio di delivery (true/false)
-    private boolean prenotazione;    //Disponibilità del servizio di prenotazione online (true/false)
+    private String numeroTelefono;
+    private boolean delivery;  //Disponibilità del servizio di delivery (true/false)
+    private boolean prenotazioneOn;    //Disponibilità del servizio di prenotazione online (true/false)
     public double prezzo_Medio;
     private LinkedList<String> cucina;
     private Luogo luogo;
     public LinkedList<Recensione> recensioni;
 
-    public Ristorante(String nome, String n_tel, boolean domicilio, boolean prenotazione, double prezzo_Medio, LinkedList<String> cucina, Luogo luogo)
+    public Ristorante(String nome, String numeroTelefono, boolean delivery, boolean prenotazioneOn, double prezzo_Medio, LinkedList<String> cucina, Luogo luogo)
     {
         this.nome = nome;
-        this.n_tel = n_tel;
-        this.domicilio = domicilio;
-        this.prenotazione = prenotazione;
+        this.numeroTelefono = numeroTelefono;
+        this.delivery = delivery;
+        this.prenotazioneOn = prenotazioneOn;
         this.prezzo_Medio = prezzo_Medio;
         this.cucina = cucina;
         this.luogo = luogo;
@@ -26,9 +26,9 @@ public class Ristorante {
 
     //<editor-fold desc="Getter">
     public String getNome(){return nome;}
-    public String getN_tel(){return n_tel;}
-    public boolean getDomicilio(){return domicilio;}
-    public boolean getPrenotazione(){return prenotazione;}
+    public String getN_tel(){return numeroTelefono;}
+    public boolean getDomicilio(){return delivery;}
+    public boolean getPrenotazione(){return prenotazioneOn;}
     public LinkedList<String> getCucina(){return cucina;}
     public Luogo getLuogo(){return luogo;}
     public LinkedList<Recensione> getRecensioni(){return recensioni;}
@@ -54,8 +54,8 @@ public class Ristorante {
         {
             cucine+=c;
         }
-        return "Ristorante: "+nome+" "+n_tel+" "+(domicilio ? "servizio di delivery disponibile" : "servizio di delivery non disponibile")+" "
-                +(prenotazione ? "servizio di prenotazione online disponibile" : "servizio di prenotazione online non disponibile")+" "+cucine+" "+luogo.toString()+"\n";
+        return "Ristorante: "+nome+" "+numeroTelefono+" "+(delivery ? "servizio di delivery disponibile" : "servizio di delivery non disponibile")+" "
+                +(prenotazioneOn ? "servizio di prenotazione online disponibile" : "servizio di prenotazione online non disponibile")+" "+cucine+" "+luogo.toString()+"\n";
     }
 
     public boolean equals(Ristorante r) {

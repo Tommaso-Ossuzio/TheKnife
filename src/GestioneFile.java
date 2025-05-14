@@ -7,7 +7,7 @@ public class GestioneFile {
     private static String nomeFile = "michelin_my_maps.csv";
     private static final String percorsoFile= System.getProperty("user.dir") + File.separator + nomeCartella + File.separator + nomeFile;
 
-    //leggiFile dovrà restiruire la lista dei ristoranti !!! DA IMPLEMENTARE !!!
+    //leggiFile dovrà restiruire la lista dei ristoranti !!! DA IMPLEMENTARE
     public static LinkedList<Ristorante> leggiFile() {
         try (BufferedReader br = new BufferedReader(new FileReader(percorsoFile))) {
             String riga;

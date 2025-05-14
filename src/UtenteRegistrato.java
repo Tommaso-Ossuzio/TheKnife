@@ -11,8 +11,8 @@ public class UtenteRegistrato extends Utente{
     boolean ristoratore;
     Luogo luogo;
 
-    private LinkedList<Ristorante> ristorantiPreferiti;
-    private LinkedList<Recensione> recensioni;
+    public LinkedList<Ristorante> ristorantiPreferiti;
+
 
     public UtenteRegistrato(String username, String nome, String cognome, Date dataNascita, String password, Luogo luogo) {
         this.username = username;
@@ -35,7 +35,9 @@ public class UtenteRegistrato extends Utente{
     public boolean isRistoratore() { return ristoratore; }
     public Luogo getLuogo() { return luogo; }
     public LinkedList<Ristorante> getRistorantiPreferiti() { return ristorantiPreferiti; }
-    public LinkedList<Recensione> getRecensioni() { return recensioni; }
+    public LinkedList<Recensione> getRecensioni() { GestioneRecensioni gr= new GestioneRecensioni();
+        gr.getRecensioni();
+    }
     //</editor-fold>
 
 
@@ -70,42 +72,47 @@ public class UtenteRegistrato extends Utente{
 
     private void aggiungiRecensione(int n_stelle,String text, Date data, Ristorante ristorante)
     {
-        Recensione recensione= new Recensione(n_stelle, text,this, ristorante );
-        recensioni.add(recensione);
-        Ristorante r = ristorante;
-        r.recensioni.add(recensione);
+        Recensione recensione= new Recensione(n_stelle, text,this, ristorante);
+        GestioneRecensioni gr= new GestioneRecensioni();
+
+        gr.add(recensione);
+
     }
 
     private void rimuoviRecensione(Recensione recensione)
     {
-        recensioni.remove(recensioni.indexOf(recensione));
-        Ristorante ristorante= recensione.getRistorante();
-        ristorante.recensioni.remove(recensioni.indexOf(ristorante));
+        GestioneRecensioni gs= new GestioneRecensioni();
+        gs.rimuoviRecensione(recensione);
 
     }
 
     private void modificaRecensione(Recensione recensione, String text, int numeroStelle )
     {
+        GestioneRecensioni gr= new GestioneRecensioni();
         numeroStelle = numeroStelle == 0 ? recensione.getNumeroStelle(): numeroStelle;
         text = text.length()==0 ||text ==null ? recensione.getText(): text;
-        if(recensioni.contains(recensione)) {
-            recensioni.set(recensioni.indexOf(recensione), new Recensione(numeroStelle, text, this, recensione.getRistorante()));
-            Ristorante ristorante= recensione.getRistorante();
-            ristorante.recensioni.set(recensioni.indexOf(recensione), new Recensione(numeroStelle, text, this, recensione.getRistorante()));
-        }
+
+        gr.modificaRecensioni(recensione, text, numeroStelle);
     }
 
     private LinkedList<Recensione> visualizzaRecensioniFatte()
     {
-        return getRecensioni();
+        LinkedList<Recensione> rec = getRecensioni();
+        LinkedList<Recensione> recProprie= new LinkedList<>();
+        for(Recensione r : rec)
+            if( r.getUtente()==this)
+                recProprie.add(r);
+
+        return recProprie;
     }
 
     private LinkedList<Ristorante> visualizzaRistorantiRecensiti()
     {
-        LinkedList<Ristorante> lista = new LinkedList<>();
-        for(Recensione r: recensioni )
-            lista.add(r.getRistorante());
-        return lista;
+//        LinkedList<Ristorante> lista = new LinkedList<>();
+//        GestioneRecensioni
+//        for(Recensione r:  )
+//            lista.add(r.getRistorante());
+//        return lista;
     }
 
     //da verificare in utente se void o LinkedList

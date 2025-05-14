@@ -6,9 +6,9 @@ public class Ristorante {
     private boolean delivery;  //Disponibilità del servizio di delivery (true/false)
     private boolean prenotazioneOn;    //Disponibilità del servizio di prenotazione online (true/false)
     public double prezzo_Medio;
-    private LinkedList<String> cucina;
+    public LinkedList<String> cucina;
     private Luogo luogo;
-    public LinkedList<Recensione> recensioni;
+
 
     public Ristorante(String nome, String numeroTelefono, boolean delivery, boolean prenotazioneOn, double prezzo_Medio, LinkedList<String> cucina, Luogo luogo)
     {
@@ -19,7 +19,7 @@ public class Ristorante {
         this.prezzo_Medio = prezzo_Medio;
         this.cucina = cucina;
         this.luogo = luogo;
-        this.recensioni = new LinkedList<>();
+
     }
     //temporaneo
     public Ristorante(){}
@@ -31,8 +31,8 @@ public class Ristorante {
     public boolean getPrenotazione(){return prenotazioneOn;}
     public LinkedList<String> getCucina(){return cucina;}
     public Luogo getLuogo(){return luogo;}
-    public LinkedList<Recensione> getRecensioni(){return recensioni;}
-    public int getNumeroRecensioni() {return recensioni.size();}
+
+
     public double getMediaStelle()
     {
         if(!recensioni.isEmpty())

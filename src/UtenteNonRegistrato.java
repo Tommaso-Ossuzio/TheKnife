@@ -65,7 +65,7 @@ public class UtenteNonRegistrato extends Utente {
                 }
                 Stessa cosa
             */
-            //DA CAMBIARE mettendo i ristoranti nelle vicinanze
+            //DA CAMBIARE mettendo i ristoranti nelle vicinanze e prendere la lista pubblica
             r = GestioneFile.leggiFile().stream().filter(x -> x.getLuogo().equals(luogo)).collect(Collectors.toCollection(LinkedList::new));
         }
         else

@@ -144,8 +144,7 @@ public class UtenteRegistrato extends Utente{
     @Override
     public LinkedList<Ristorante> cercaRistorante(Luogo luogo, String cucina, double prezzoMinore, double prezzoMaggiore, boolean delivery, boolean prenotazioneOn, double medStelle)
     {
-        GestioneFile gf = new GestioneFile();
-        LinkedList<Ristorante> lista = gf.leggiFile();
+        LinkedList<Ristorante> lista = GestioneFile.leggiFile();
 
 
         if(luogo!= null)

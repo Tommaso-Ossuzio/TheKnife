@@ -37,10 +37,11 @@ public class Ristoratore extends UtenteRegistrato{
     public LinkedList<Recensione> visualizzaRecensioni()
     {
         LinkedList<Recensione> recensioni =new LinkedList<>();
+        GestioneRecensioni gr = new GestioneRecensioni();
         for(Ristorante r :ristoranti)
-        {
-            recensioni.addAll(r.getRecensioni());
-        }
+            for (Recensione rec: gr.getRecensioni())
+                if(rec.getRistorante().equals(r))
+                    recensioni.add(rec);
         return recensioni;
     }
 
@@ -51,36 +52,39 @@ public class Ristoratore extends UtenteRegistrato{
 
     public int numeroRecensioni()
     {
+        GestioneRecensioni gr = new GestioneRecensioni();
         int cont=0;
         for(Ristorante r : ristoranti)
-        {
-            cont+=r.getNumeroRecensioni();
-        }
+            for(Recensione rec : gr.getRecensioni())
+                if(rec.getRistorante().equals(r))
+                    cont++;
         return cont;
     }
 
     public double calcolaMedia()
     {
+        GestioneRecensioni gr = new GestioneRecensioni();
         int contStelle=0;
         for(Ristorante rist: ristoranti)
-        {
-            for(Recensione rec: rist.recensioni)
-            {
-                contStelle+=rec.getNumeroStelle();
-            }
-        }
+            for(Recensione rec : gr.getRecensioni())
+                if(rec.getRistorante().equals(rist))
+                    contStelle+=rec.getNumeroStelle();
+
+
         return contStelle/numeroRecensioni();
     }
 
     public String visualizzaRiepilogo(Ristorante ristorante)
     {
         String s = "";
-        s+="Le stelle medie sono "+calcolaMedia()+" ("+numeroRecensioni()+"\n";
+        GestioneRecensioni gr = new GestioneRecensioni();
+        s+="Le stelle medie sono "+calcolaMedia()+" ("+numeroRecensioni()+")\n";
         for(Ristorante r: ristoranti)
         {
             s+=r.toString();
-            for (Recensione rec: r.recensioni)
-                s+="\t"+rec.toString();
+            for (Recensione rec: gr.getRecensioni())
+                if(rec.getRistorante().equals(ristorante))
+                    s+="\t"+rec.toString();
         }
 
         return s;

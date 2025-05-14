@@ -22,9 +22,7 @@ public class UtenteRegistrato extends Utente{
         this.password = password;
         this.ristoratore = false;
         this.luogo = luogo;
-
         this.ristorantiPreferiti = new LinkedList<Ristorante>();
-        this.recensioni = new LinkedList<>();
     }
 
     //<editor-fold desc="Getter">
@@ -36,7 +34,7 @@ public class UtenteRegistrato extends Utente{
     public Luogo getLuogo() { return luogo; }
     public LinkedList<Ristorante> getRistorantiPreferiti() { return ristorantiPreferiti; }
     public LinkedList<Recensione> getRecensioni() { GestioneRecensioni gr= new GestioneRecensioni();
-        gr.getRecensioni();
+        return  gr.getRecensioni();
     }
     //</editor-fold>
 
@@ -81,8 +79,8 @@ public class UtenteRegistrato extends Utente{
 
     private void rimuoviRecensione(Recensione recensione)
     {
-        GestioneRecensioni gs= new GestioneRecensioni();
-        gs.rimuoviRecensione(recensione);
+        GestioneRecensioni gr= new GestioneRecensioni();
+        gr.rimuoviRecensione(recensione);
 
     }
 
@@ -106,20 +104,30 @@ public class UtenteRegistrato extends Utente{
         return recProprie;
     }
 
+    /**
+     * restituisce tutti i ristoranti recensiti
+     * @return
+     */
     private LinkedList<Ristorante> visualizzaRistorantiRecensiti()
     {
-//        LinkedList<Ristorante> lista = new LinkedList<>();
-//        GestioneRecensioni
-//        for(Recensione r:  )
-//            lista.add(r.getRistorante());
-//        return lista;
+        LinkedList<Ristorante> lista = new LinkedList<>();
+        GestioneRecensioni gr = new GestioneRecensioni();
+        for(Recensione r: gr.getRecensioni() )
+            lista.add(r.getRistorante());
+        return lista;
     }
 
     //da verificare in utente se void o LinkedList
     @Override
     public LinkedList<Recensione> visualizzaRecensioni(Ristorante ristorante)
     {
-        return ristorante.getRecensioni();
+        GestioneRecensioni gr = new GestioneRecensioni();
+        LinkedList<Recensione> lista = new LinkedList<>();
+
+        for ( Recensione r : gr.getRecensioni())
+            if(r.getRistorante().equals(ristorante))
+                lista.add(r);
+        return lista;
     }
 
 
